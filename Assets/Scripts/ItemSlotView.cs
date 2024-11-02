@@ -8,7 +8,7 @@ public class ItemSlotView : MonoBehaviour
 
     private void Update()
     {
-        if (itemSlot.Item is null)
+        if (itemSlot.item is null)
         {
             spriteRenderer.color = Color.red;
         }

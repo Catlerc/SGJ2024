@@ -35,6 +35,27 @@ public class Shape
         };
     }
 
+    public Shape withCustomOrigin(Vector2Int origin)
+    {
+        var newPoints = new List<Vector2Int>();
+        foreach (var point in points)
+        {
+            var newX = point.x - origin.x;
+            var newY = point.y - origin.y;
+            newPoints.Add(new Vector2Int(newX, newY));
+        }
+
+        var bounds = calculateMinMax(newPoints);
+        return new Shape
+        {
+            points = newPoints.ToArray(),
+            minX = bounds[0],
+            maxX = bounds[1],
+            minY = bounds[2],
+            maxY = bounds[3],
+        };
+    }
+
     public static int[] calculateMinMax(List<Vector2Int> points) // => minX, maxX, minY, maxY
     {
         int minX = 99999999;

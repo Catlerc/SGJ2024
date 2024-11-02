@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Object = System.Object;
 
 public class Container
 {
@@ -16,7 +17,7 @@ public class Container
         for (int y = 0; y < height; y++)
         {
             var pos = new Vector2Int(x, y);
-            slots[pos] = new ItemSlot(null, pos);
+            slots[pos] = new ItemSlot(pos);
         }
     }
 
@@ -29,7 +30,7 @@ public class Container
         {
             var containerPoint = itemPoint + applyPos;
             var slotAtPoint = getSlot(containerPoint);
-            if (slotAtPoint == null || slotAtPoint.Item != null)
+            if (slotAtPoint == null || slotAtPoint.item != null)
             {
                 badPart.Add(itemPoint);
             }
@@ -53,7 +54,17 @@ public class Container
         foreach (var point in item.shape.points)
         {
             var slotAtPoint = getSlot(point + slot.pos);
-            slotAtPoint.Item = item;
+            slotAtPoint.item = item;
+            slotAtPoint.posInItemShape = point;
+        }
+    }
+
+    public void removeItem(Item item)
+    {
+        foreach (var (pos, slot) in this.slots)
+        {
+            if (slot.item != null && slot.item.id == item.id)
+                slot.item = null;
         }
     }
 

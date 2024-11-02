@@ -5,52 +5,126 @@ public class Cursor : MonoBehaviour
 {
     public ContainerView containerView;
     public static Cursor instance;
-    public ItemPreview itemPreview;
+    public ItemType testType;
 
+    public GameObject itemObjPrefab;
 
+    // item in hand
+    public Item itemInHand;
+    private GameObject itemInHandObj;
+    private ItemPartsView itemInHandPartsView;
+    private ItemView itemInHandView;
+
+    //state
     private ItemSlotView overItemView = null;
 
     private void Start()
     {
         instance = this;
+        grabItem(new Item(this.testType));
+    }
+
+    public void grabItem(Item item)
+    {
+        itemInHand = item;
+        itemInHandObj = Instantiate(itemObjPrefab, transform);
+        itemInHandPartsView = itemInHandObj.GetComponentInChildren<ItemPartsView>();
+        itemInHandView = itemInHandObj.GetComponentInChildren<ItemView>();
+        itemInHandPartsView.item = item;
+        itemInHandView.item = item;
+        itemInHandPartsView.generateParts();
+        itemInHandView.updateSpriteSize();
+    }
+
+
+    private void placeItemInContainer()
+    {
+        var check = containerView.container.checkShape(itemInHand.shape, overItemView.itemSlot.pos);
+
+        if (check.badParts.Length == 0)
+        {
+            containerView.applyItem(overItemView, itemInHand);
+            itemInHand = null;
+            Destroy(itemInHandObj);
+        }
+    }
+
+
+    private void rotateItemHand()
+    {
+        itemInHand.rotate();
+        itemInHandView.updateSpriteSize();
+        itemInHandPartsView.generateParts();
+    }
+
+    private void updateItemHandPosition()
+    {
+        if (overItemView != null)
+        {
+            itemInHandView.transform.position = overItemView.transform.position;
+            itemInHandPartsView.transform.position = overItemView.transform.position;
+        }
+        else
+        {
+            itemInHandView.transform.position = transform.position;
+            itemInHandPartsView.transform.position = transform.position;
+        }
+    }
+
+    private void updateItemContainerIntersection()
+    {
+        var check = containerView.container.checkShape(itemInHand.shape, overItemView.itemSlot.pos);
+        if (check.badParts.Length == 0)
+        {
+            foreach (var partPos in check.okParts) itemInHandPartsView.parts[partPos].ok = true;
+        }
+        else
+        {
+            foreach (var partPos in check.okParts) itemInHandPartsView.parts[partPos].ok = true;
+            foreach (var partPos in check.badParts) itemInHandPartsView.parts[partPos].ok = false;
+        }
+    }
+
+    private void grabItemFromContainer()
+    {
+        grabItem(overItemView.itemSlot.item.withCustomOrigin(overItemView.itemSlot.posInItemShape.Value));
+        containerView.removeItem(overItemView.itemSlot.item);
+    }
+
+    private void updateCursorPosition()
+    {
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        transform.position = pos;
     }
 
     private void Update()
     {
-        if (overItemView != null)
+        if (itemInHand != null && Input.GetMouseButtonDown(1))
         {
-            var check = containerView.container.checkShape(itemPreview.item.shape, overItemView.itemSlot.pos);
-            if (check.badParts.Length == 0)
-            {
-                foreach (var partPos in check.okParts) itemPreview.parts[partPos].ok = true;
-            }
-            else
-            {
-                foreach (var partPos in check.okParts) itemPreview.parts[partPos].ok = true;
-                foreach (var partPos in check.badParts) itemPreview.parts[partPos].ok = false;
-            }
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (check.badParts.Length == 0)
-                {
-                    containerView.container.applyItem(overItemView.itemSlot, itemPreview.item);
-                }
-            }
+            rotateItemHand();
+            goto skipOtherActions;
         }
 
-
-        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pos.z = 0;
-        if (overItemView != null)
+        if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView != null)
         {
-            itemPreview.transform.position = overItemView.transform.position;
-            overItemView = null;
+            placeItemInContainer();
+            goto skipOtherActions;
         }
-        else
-            itemPreview.transform.position = pos;
 
-        transform.position = pos;
+        if (itemInHand == null && Input.GetMouseButtonDown(0) && overItemView != null && overItemView.itemSlot.item != null)
+        {
+            grabItemFromContainer();
+            goto skipOtherActions;
+        }
+
+        skipOtherActions:
+
+        updateCursorPosition();
+        if (itemInHand != null && overItemView != null) updateItemContainerIntersection();
+        if (itemInHand != null) updateItemHandPosition();
+
+        overItemView = null;
     }
 
 
