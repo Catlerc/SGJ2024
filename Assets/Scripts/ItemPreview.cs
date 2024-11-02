@@ -14,7 +14,7 @@ public class ItemPreview : MonoBehaviour
 
     public SpriteRenderer itemSprite;
 
-    public List<GameObject> parts = new List<GameObject>();
+    public Dictionary<Vector2Int, ItemPart> parts = new Dictionary<Vector2Int, ItemPart>();
     public GameObject itemRotationPoint;
 
     private void Start()
@@ -41,26 +41,26 @@ public class ItemPreview : MonoBehaviour
     public void generateParts(Shape shape)
     {
         clearParts();
-        foreach (var point in shape.places)
+        foreach (var point in shape.points)
         {
-            var newPart = Instantiate(partPrefab, transform);
+            var newPart = Instantiate(partPrefab, transform).GetComponent<ItemPart>();
             newPart.transform.localPosition = new Vector3(
                 point.x * spacing,
                 point.y * spacing,
                 0
             );
-            parts.Add(newPart);
+            parts[point] = newPart;
         }
     }
 
     public void clearParts()
     {
-        foreach (var part in parts)
+        foreach (var (key, part) in parts)
         {
-            Destroy(part);
+            Destroy(part.gameObject);
         }
 
-        parts = new List<GameObject>();
+        parts = new Dictionary<Vector2Int, ItemPart>();
     }
 
 

@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class Shape
 {
-    public Vector2Int[] places;
+    public Vector2Int[] points;
     public int minX;
     public int maxX;
     public int minY;
@@ -17,7 +17,7 @@ public class Shape
     public Shape rotate()
     {
         var newPoints = new List<Vector2Int>();
-        foreach (var point in places)
+        foreach (var point in points)
         {
             var newX = point.y;
             var newY = -point.x;
@@ -27,7 +27,7 @@ public class Shape
         var bounds = calculateMinMax(newPoints);
         return new Shape
         {
-            places = newPoints.ToArray(),
+            points = newPoints.ToArray(),
             minX = bounds[0],
             maxX = bounds[1],
             minY = bounds[2],
@@ -74,7 +74,7 @@ public class Shape
 
         return new Shape
         {
-            places = places.ToArray(),
+            points = places.ToArray(),
             minX = bounds[0],
             maxX = bounds[1],
             minY = bounds[2],

@@ -17,4 +17,9 @@ public class ItemSlotView : MonoBehaviour
             spriteRenderer.color = Color.green;
         }
     }
+
+    private void OnMouseOver()
+    {
+        Cursor.instance?.isOverItemSlot(this);
+    }
 }
