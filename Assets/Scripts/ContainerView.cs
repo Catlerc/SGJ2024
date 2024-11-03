@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ContainerView : MonoBehaviour
@@ -38,7 +39,7 @@ public class ContainerView : MonoBehaviour
     {
         container.applyItem(slot.itemSlot, item);
         var itemView = Instantiate(itemViewPrefab, itemsBag).GetComponent<ItemView>();
-        itemView.transform.position = slot.transform.position;
+        itemView.transform.position = slot.transform.position ;
         itemView.item = item;
         itemView.updateSpriteSize();
         itemViews[item.id] = itemView;
@@ -50,5 +51,25 @@ public class ContainerView : MonoBehaviour
         var itemView = itemViews[item.id];
         itemViews[item.id] = null;
         Destroy(itemView.gameObject);
+    }
+
+    [CanBeNull]
+    public ItemSlotView getBottomLeftOfItemInContainer(Item item)
+    {
+        var oldPos = new Vector2Int(9999, 9999);
+        ItemSlotView slotView = null;
+        foreach (var (pos, slot) in slots)
+        {
+            if (slot.itemSlot.item != null && slot.itemSlot.item.id == item.id)
+            {
+                if (oldPos.x > pos.x || oldPos.y > pos.y)
+                {
+                    oldPos = pos;
+                    slotView = slot;
+                }
+            }
+        }
+
+        return slotView;
     }
 }
