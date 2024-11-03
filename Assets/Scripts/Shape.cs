@@ -74,22 +74,29 @@ public class Shape
         return new[] { minX, maxX, minY, maxY };
     }
 
-    public static Shape fromStrings(string[] strings, Vector2Int center)
+    public static Shape fromStrings(string[] strings)
     {
-        var places = new List<Vector2Int>();
+        Vector2Int? center = null;
+        var placesRaw = new List<Vector2Int>();
         for (int y = 0; y < strings.Length; y++)
         {
             var line = strings[strings.Length - y - 1];
             for (int x = 0; x < line.Length; x++)
             {
                 var ch = line[x];
-                if (ch == '1')
-                {
-                    var pos = new Vector2Int(x - center.x, y - center.y);
-                    places.Add(pos);
-                }
+                var pos = new Vector2Int(x, y);
+                if (ch != '0') placesRaw.Add(pos);
+                if (ch == '2') center = pos;
             }
         }
+
+        var places = new List<Vector2Int>();
+
+        foreach (var placeRaw in placesRaw)
+        {
+            places.Add(placeRaw - center.Value);
+        }
+
 
         var bounds = calculateMinMax(places);
 

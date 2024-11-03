@@ -10,10 +10,9 @@ public class ItemType : ScriptableObject
     public Sprite image;
 
     public string[] rawPlaces;
-    public Vector2Int center;
 
     public Shape getShape()
     {
-        return Shape.fromStrings(this.rawPlaces, center);
+        return Shape.fromStrings(this.rawPlaces);
     }
 }

@@ -26,6 +26,7 @@ public class Cursor : MonoBehaviour
 
     public void grabItem(Item item)
     {
+        removeItemFromHand();
         itemInHand = item;
         itemInHandObj = Instantiate(itemObjPrefab, transform);
         itemInHandPartsView = itemInHandObj.GetComponentInChildren<ItemPartsView>();
@@ -44,6 +45,14 @@ public class Cursor : MonoBehaviour
         if (check.badParts.Length == 0)
         {
             containerView.applyItem(overItemView, itemInHand);
+            removeItemFromHand();
+        }
+    }
+
+    public void removeItemFromHand()
+    {
+        if (itemInHand != null)
+        {
             itemInHand = null;
             Destroy(itemInHandObj);
         }
@@ -106,13 +115,25 @@ public class Cursor : MonoBehaviour
             goto skipOtherActions;
         }
 
+        if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView != null &&
+            overItemView.itemSlot.item != null && overItemView.itemSlot.item.type is ChestItemType &&
+            itemInHand.type is KeyItemType)
+        {
+            // grabItemFromContainer();
+            (overItemView.itemSlot.item.type as ChestItemType).openChest(containerView, overItemView.itemSlot.item);
+            removeItemFromHand();
+
+            goto skipOtherActions;
+        }
+
         if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView != null)
         {
             placeItemInContainer();
             goto skipOtherActions;
         }
 
-        if (itemInHand == null && Input.GetMouseButtonDown(0) && overItemView != null && overItemView.itemSlot.item != null)
+        if (itemInHand == null && Input.GetMouseButtonDown(0) && overItemView != null &&
+            overItemView.itemSlot.item != null)
         {
             grabItemFromContainer();
             goto skipOtherActions;
