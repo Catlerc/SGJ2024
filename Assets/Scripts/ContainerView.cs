@@ -16,7 +16,7 @@ public class ContainerView : MonoBehaviour
     private void Start()
     {
         //test
-        this.container = new Container(30, 10);
+        this.container = new Container(10, 5);
 
         generateSlots();
         //test
@@ -41,7 +41,6 @@ public class ContainerView : MonoBehaviour
         itemView.transform.position = slot.transform.position;
         itemView.item = item;
         itemView.updateSpriteSize();
-        // itemView.item
         itemViews[item.id] = itemView;
     }
 

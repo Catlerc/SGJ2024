@@ -22,7 +22,7 @@ public class ItemPartsView : MonoBehaviour
             newPart.transform.localPosition = new Vector3(
                 point.x * spacing,
                 point.y * spacing,
-                0
+                -1
             );
             parts[point] = newPart;
         }

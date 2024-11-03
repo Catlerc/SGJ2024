@@ -15,11 +15,9 @@ public class ItemView : MonoBehaviour
     public void updateSpriteSize()
     {
         itemSprite.sprite = item.type.image;
-        // var shape = item.type
-        //     .getShape(); // нам нужена изначальная форма предмета, а не та, что получилась после поворота.
         itemRotationPoint.transform.localPosition = new Vector3(
-            (item.shape.maxX + item.shape.minX) / 2f * spacing, // - spacing / 2,
-            (item.shape.maxY + item.shape.minY) / 2f * spacing, // - spacing / 2,
+            (item.shape.maxX + item.shape.minX) / 2f * spacing, 
+            (item.shape.maxY + item.shape.minY) / 2f * spacing, 
             0
         );
         var targetSize = new Vector2(
@@ -38,11 +36,5 @@ public class ItemView : MonoBehaviour
 
         itemSprite.transform.localScale = new Vector3(scale.x, scale.y, 1);
         itemRotationPoint.transform.rotation = Quaternion.Euler(0, 0, 90 * item.rotation);
-    }
-
-
-    private void Update()
-    {
-        // itemRotationPoint.transform.rotation = Quaternion.Euler(0, 0, 90 * item.rotation);
     }
 }

@@ -13,8 +13,8 @@ public class Container
     public Container(int width, int height)
     {
         slots = new Dictionary<Vector2Int, ItemSlot>();
-        for (int x = 0; x < width; x++)
-        for (int y = 0; y < height; y++)
+        for (int x = -width; x < width; x++)
+        for (int y = -height; y < height; y++)
         {
             var pos = new Vector2Int(x, y);
             slots[pos] = new ItemSlot(pos);
