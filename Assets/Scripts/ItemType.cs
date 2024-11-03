@@ -7,6 +7,7 @@ public class ItemType : ScriptableObject
     public string name;
     public string cost;
     public string description;
+    public string category;
     public Sprite image;
 
     public string[] rawPlaces;
