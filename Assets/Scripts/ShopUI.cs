@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ public class ShopUI : MonoBehaviour
 
     public TextMeshPro bountyText;
 
+    public GameObject winScreen;
+
     private void Start()
     {
         instance = this;
@@ -36,13 +39,17 @@ public class ShopUI : MonoBehaviour
         }
 
         var i = 0;
+        var l = new List<GameObject>();
         foreach (var itemType in actualShop.items)
         {
             var line = Instantiate(linePrefab, lineStartMarker).GetComponent<ButItemLine>();
             line.init(new Item(itemType));
             line.transform.localPosition = new Vector3(0, -i, -3);
+            l.Add(line.gameObject);
             i += 1;
         }
+
+        lines = l.ToArray();
     }
 
     public void openShopUI()
@@ -58,8 +65,17 @@ public class ShopUI : MonoBehaviour
         shopInterface.SetActive(false);
         inventoryTransform.position = markNormInv.position;
         dropButtonTransform.position = markNormDropButton.position;
+        if (actualShop.isLast)
+        {
+            winScreen.SetActive(true);
+        }
+
+        foreach (var obj in lines)
+        {
+            Destroy(obj);
+        }
     }
-    
+
     public void payBounty()
     {
         var count = Economics.instance.countMoney();
@@ -68,6 +84,7 @@ public class ShopUI : MonoBehaviour
             Economics.instance.removeMoney(actualShop.bounty);
             Player.instance.walking = true;
             // Cursor.instance.grabItem(item);
+            closeShopUI();
         }
     }
 }

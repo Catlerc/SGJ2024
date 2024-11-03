@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11276800068b4036bfe3d4750994a5f2, type: 3}
   m_Name: Medium
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
   lootTable:
   - {fileID: 11400000, guid: e56d722b9594746429dfd4ea9ebe2cd1, type: 2}
   - {fileID: 11400000, guid: a4f131da1e36f8d428b7fea042b169fd, type: 2}
@@ -31,5 +31,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82eac267cea8d1b4b9bf6daf09ae88a2, type: 2}
   - {fileID: 11400000, guid: 08139943e71d2254c81490bc7f606a39, type: 2}
   - {fileID: 11400000, guid: e5d6e6acb13bdfb40aaf03abee9e20ee, type: 2}
-  maxHP: 125
+  maxHP: 50
   attack: 25

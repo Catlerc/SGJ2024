@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11276800068b4036bfe3d4750994a5f2, type: 3}
   m_Name: New Enemy Type
   m_EditorClassIdentifier: 
-  sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
   lootTable:
   - {fileID: 11400000, guid: 61cf93396ab08b54395dc66fe2a9514b, type: 2}
   maxHP: 10

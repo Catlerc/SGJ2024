@@ -5,6 +5,8 @@ public class Shop : MonoBehaviour
     public int bounty;
     public ItemType[] items;
 
+    public bool isLast;
+
 
     public void openShopUI()
     {

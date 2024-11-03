@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     public Health health;
     public EnemyType type;
     public SpriteRenderer spriteRenderer;
-    public Player player;
     public GameObject lootPrefab;
 
     // state
@@ -56,16 +55,16 @@ public class Enemy : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        player.attack(type.attack);
+        Player.instance.attack(type.attack);
         inAnimation = false;
         myTurn = false;
-        player.myTurn = true;
+        Player.instance.myTurn = true;
     }
 
     public void dead()
     {
-        player.walking = true;
-        var loot = Instantiate(lootPrefab, player.mapObj.transform).GetComponent<Loot>();
+        Player.instance.walking = true;
+        var loot = Instantiate(lootPrefab, Player.instance.mapObj.transform).GetComponent<Loot>();
         loot.transform.position = transform.position + new Vector3(0, 0, -0.2f);
         loot.init(type.randomItemFromLoootTable());
         Destroy(gameObject);

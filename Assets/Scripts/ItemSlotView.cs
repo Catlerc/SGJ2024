@@ -10,11 +10,13 @@ public class ItemSlotView : MonoBehaviour
     {
         if (itemSlot.item is null)
         {
-            spriteRenderer.color = Color.red;
+            spriteRenderer.color = Color.grey;
+            spriteRenderer.gameObject.SetActive(true);
         }
         else
         {
-            spriteRenderer.color = Color.green;
+            spriteRenderer.gameObject.SetActive(false);
+            // spriteRenderer.color = Color.green;
         }
     }
 

@@ -138,6 +138,8 @@ MonoBehaviour:
   health: {fileID: 1439355327498288852}
   type: {fileID: 0}
   spriteRenderer: {fileID: 7165564989160097161}
+  lootPrefab: {fileID: 5382569634891566175, guid: fc869c955ca9b8f48894fda45c531e43, type: 3}
+  myTurn: 0
 --- !u!114 &1439355327498288852
 MonoBehaviour:
   m_ObjectHideFlags: 0

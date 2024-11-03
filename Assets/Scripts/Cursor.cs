@@ -7,7 +7,7 @@ public class Cursor : MonoBehaviour
 {
     public ContainerView containerView;
     public static Cursor instance;
-    public ItemType testType;
+    // public ItemType testType;
 
     public GameObject itemObjPrefab;
     public Player player;
@@ -30,7 +30,7 @@ public class Cursor : MonoBehaviour
     private void Start()
     {
         instance = this;
-        grabItem(new Item(this.testType));
+        // grabItem(new Item(this.testType));
     }
 
     public void grabItem(Item item)
@@ -89,8 +89,22 @@ public class Cursor : MonoBehaviour
         }
     }
 
-    private void updateItemContainerIntersection()
+    private void disableItemPartsRender()
     {
+        foreach (var (pos, part) in itemInHandPartsView.parts)
+        {
+            part.gameObject.SetActive(false);
+        }
+    }
+
+    private void updateItemContainerIntersection()
+
+    {
+        foreach (var (pos, part) in itemInHandPartsView.parts)
+        {
+            part.gameObject.SetActive(true);
+        }
+
         var check = containerView.container.checkShape(itemInHand.shape, overItemView.itemSlot.pos);
         if (check.badParts.Length == 0)
         {
@@ -170,7 +184,7 @@ public class Cursor : MonoBehaviour
 
 
         // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
-        
+
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
@@ -207,7 +221,10 @@ public class Cursor : MonoBehaviour
         skipOtherActions:
 
         updateCursorPosition();
-        if (itemInHand != null && overItemView != null) updateItemContainerIntersection();
+        if (itemInHand != null)
+            if (overItemView != null) updateItemContainerIntersection();
+            else disableItemPartsRender();
+
         if (itemInHand != null) updateItemHandPosition();
 
         overItemView = null;

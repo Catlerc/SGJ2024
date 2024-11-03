@@ -12,10 +12,12 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSpriteRenderer2;
     public SpriteRenderer itemRenderer;
     public Cursor cursor;
+    public GameObject gameOverScreen;
 
     //settings
     public float moveSpeed = 1f;
 
+    public ItemType startingItem;
     //state
     public bool walking = true;
     public Health health;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         instance = this;
+        setItem(new Item(startingItem));
     }
 
     private void Update()
@@ -99,7 +102,6 @@ public class Player : MonoBehaviour
         {
             walking = false;
             enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.player = this;
             enemy.myTurn = false;
             myTurn = true;
         }
@@ -114,6 +116,7 @@ public class Player : MonoBehaviour
 
     public void GameOver()
     {
+        gameOverScreen.SetActive(true);
     }
 
     public void attack(float dmg)
