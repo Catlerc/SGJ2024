@@ -12,6 +12,9 @@ public class Cursor : MonoBehaviour
     public GameObject itemObjPrefab;
     public Player player;
 
+    public GameObject lootPrefab;
+
+    public Transform dropPoint;
     // item in hand
     public Item itemInHand;
     private GameObject itemInHandObj;
@@ -112,6 +115,14 @@ public class Cursor : MonoBehaviour
         transform.position = pos;
     }
 
+    private void dropItemFromHand()
+    {
+        var loot = Instantiate(lootPrefab, player.mapObj.transform).GetComponent<Loot>();
+        loot.transform.position = dropPoint.position + new Vector3(0, 0, -0.2f);
+        loot.init(itemInHand);
+        removeItemFromHand();
+        
+    }
 
     private void applyPotionToPlayer()
     {
@@ -183,6 +194,9 @@ public class Cursor : MonoBehaviour
             grabItemFromContainer();
             goto skipOtherActions;
         }
+
+        if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView == null && !clickOnPlayer)
+            dropItemFromHand();
 
         skipOtherActions:
 

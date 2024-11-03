@@ -662,6 +662,8 @@ MonoBehaviour:
   testType: {fileID: 11400000, guid: ba83a537842d37241bd1b20866cdff53, type: 2}
   itemObjPrefab: {fileID: 4643042427284053399, guid: 1d16138bb94e81e4c899e5152577c0bc, type: 3}
   player: {fileID: 943120988}
+  lootPrefab: {fileID: 5382569634891566175, guid: fc869c955ca9b8f48894fda45c531e43, type: 3}
+  dropPoint: {fileID: 2129476105}
   clickOnPlayer: 0
   overLoot: {fileID: 0}
 --- !u!4 &504645123
