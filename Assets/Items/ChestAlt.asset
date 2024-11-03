@@ -18,7 +18,9 @@ MonoBehaviour:
     \u043C\u0443\u043B\u044C\u0442\u0438\u043A\u0438, \u0430 \u0441\u0435\u0439\u0447\u0430\u0441
     \u0437\u0430\u043A\u0440\u044B\u043B\u0441\u044F \u043E\u0442 \u0432\u0441\u0435\u0445"
   category: "\u041F\u0430\u0441\u0445\u0430\u043B\u043A\u0438"
-  image: {fileID: 0}
-  damage: 0
-  rawPlaces: []
+  image: {fileID: 2495889264631052897, guid: 2ed437765ed7bdd48a66b9a5c4c22fdf, type: 3}
+  damage: 2
+  rawPlaces:
+  - 12
+  - 11
   lootTable: []

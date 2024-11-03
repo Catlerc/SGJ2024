@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  lootTable: []
-  maxHP: 0
-  attack: 0
+  lootTable:
+  - {fileID: 11400000, guid: 0bb16fbb20c46a549aaa6948b64fc195, type: 2}
+  - {fileID: 11400000, guid: 63deb6a7b3f83c645a49b661eb9f6b74, type: 2}
+  - {fileID: 11400000, guid: a927e607bbc372643a77684b5d4c539c, type: 2}
+  maxHP: 100
+  attack: 20

@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  lootTable: []
-  maxHP: 0
-  attack: 0
+  lootTable:
+  - {fileID: 11400000, guid: f0abafc05312c894c85daf1e67183e62, type: 2}
+  - {fileID: 11400000, guid: 5480648aca1c429458a53c8ac7c91fa1, type: 2}
+  - {fileID: 11400000, guid: 8cc54390d4eb05f4d9e64ef29e67b37b, type: 2}
+  - {fileID: 11400000, guid: 27f370b077437e244937d5f078c7f24a, type: 2}
+  - {fileID: 11400000, guid: 02823742663b5594cac0644eb1e5e294, type: 2}
+  - {fileID: 11400000, guid: 0bb16fbb20c46a549aaa6948b64fc195, type: 2}
+  - {fileID: 11400000, guid: 63deb6a7b3f83c645a49b661eb9f6b74, type: 2}
+  - {fileID: 11400000, guid: a927e607bbc372643a77684b5d4c539c, type: 2}
+  - {fileID: 11400000, guid: c373719ec3e926a4196243f14566eb81, type: 2}
+  maxHP: 150
+  attack: 30

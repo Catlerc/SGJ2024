@@ -13,6 +13,23 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  lootTable: []
-  maxHP: 0
-  attack: 0
+  lootTable:
+  - {fileID: 11400000, guid: e56d722b9594746429dfd4ea9ebe2cd1, type: 2}
+  - {fileID: 11400000, guid: a4f131da1e36f8d428b7fea042b169fd, type: 2}
+  - {fileID: 11400000, guid: 178009632d646f749a618e82c6d10eef, type: 2}
+  - {fileID: 11400000, guid: 02823742663b5594cac0644eb1e5e294, type: 2}
+  - {fileID: 11400000, guid: 5467aed49c61cac44863a5166db00100, type: 2}
+  - {fileID: 11400000, guid: 8cc54390d4eb05f4d9e64ef29e67b37b, type: 2}
+  - {fileID: 11400000, guid: 0bb16fbb20c46a549aaa6948b64fc195, type: 2}
+  - {fileID: 11400000, guid: 63deb6a7b3f83c645a49b661eb9f6b74, type: 2}
+  - {fileID: 11400000, guid: a927e607bbc372643a77684b5d4c539c, type: 2}
+  - {fileID: 11400000, guid: 73881de37caf39f4db4d54917152f2cf, type: 2}
+  - {fileID: 11400000, guid: e1861c68120837143b00c26d9863a68d, type: 2}
+  - {fileID: 11400000, guid: 37bf6a68d9bba544fb47165139b79e1f, type: 2}
+  - {fileID: 11400000, guid: 294d1df642887374ea1c452f7e21912f, type: 2}
+  - {fileID: 11400000, guid: 44eda0c81db23b04a9c149a53163d8a0, type: 2}
+  - {fileID: 11400000, guid: 82eac267cea8d1b4b9bf6daf09ae88a2, type: 2}
+  - {fileID: 11400000, guid: 08139943e71d2254c81490bc7f606a39, type: 2}
+  - {fileID: 11400000, guid: e5d6e6acb13bdfb40aaf03abee9e20ee, type: 2}
+  maxHP: 125
+  attack: 25

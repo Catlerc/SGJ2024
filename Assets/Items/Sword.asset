@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794f96dfa917422c88f65604d6dff440, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  name: 
-  cost: 
-  description: 
-  category: 
-  image: {fileID: 0}
-  damage: 0
-  rawPlaces: []
+  name: "\u041C\u0435\u0447"
+  cost: 15
+  description: "\u041A\u0430\u043A \u043D\u043E\u0436, \u043D\u043E \u0431\u043E\u043B\u044C\u0448\u043E\u0439
+    \u0438 \u0440\u0435\u0436\u0435\u0442 \u043D\u0435 \u0442\u043E\u043B\u044C\u043A\u043E
+    \u043C\u0430\u0441\u043B\u043E"
+  category: "\u041E\u0440\u0443\u0436\u0438\u0435"
+  image: {fileID: -1192600371931176174, guid: 905a5e515d9cd944d8aa86c6b359dcf1, type: 3}
+  damage: 25
+  rawPlaces:
+  - 1
+  - 1
+  - 2

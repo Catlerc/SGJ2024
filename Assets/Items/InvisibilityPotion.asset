@@ -17,7 +17,9 @@ MonoBehaviour:
   description: "\u041A\u0430\u0436\u0435\u0442\u0441\u044F \u0432\u043D\u0443\u0442\u0440\u0438
     \u0431\u0443\u0442\u044B\u043B\u043A\u0438 \u043F\u0443\u0441\u0442\u043E"
   category: "\u0417\u0435\u043B\u044C\u044F"
-  image: {fileID: 0}
-  damage: 0
-  rawPlaces: []
+  image: {fileID: 4834778100086181079, guid: 3b3ff37f3aded3949b55caef4c3c4f5d, type: 3}
+  damage: 1
+  rawPlaces:
+  - 12
+  - 11
   duration: 0
