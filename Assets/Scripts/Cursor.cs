@@ -15,6 +15,7 @@ public class Cursor : MonoBehaviour
     public GameObject lootPrefab;
 
     public Transform dropPoint;
+
     // item in hand
     public Item itemInHand;
     private GameObject itemInHandObj;
@@ -121,7 +122,6 @@ public class Cursor : MonoBehaviour
         loot.transform.position = dropPoint.position + new Vector3(0, 0, -0.2f);
         loot.init(itemInHand);
         removeItemFromHand();
-        
     }
 
     private void applyPotionToPlayer()
@@ -149,6 +149,7 @@ public class Cursor : MonoBehaviour
 
     private void Update()
     {
+        // print(itemInHand);
         if (itemInHand != null && Input.GetMouseButtonDown(1))
         {
             rotateItemHand();
@@ -161,9 +162,18 @@ public class Cursor : MonoBehaviour
             Destroy(overLoot.gameObject);
             goto skipOtherActions;
         }
+        // if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView == null && !clickOnPlayer)
+        // {
+        //     dropItemFromHand();
+        //     goto skipOtherActions;
+        // }
 
+
+        // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
+        if (clickOnPlayer) print("clicked " + (itemInHand != null));
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
+            print("aaaa");
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
                 applyPotionToPlayer();
             else
@@ -195,9 +205,6 @@ public class Cursor : MonoBehaviour
             goto skipOtherActions;
         }
 
-        if (itemInHand != null && Input.GetMouseButtonDown(0) && overItemView == null && !clickOnPlayer)
-            dropItemFromHand();
-
         skipOtherActions:
 
         updateCursorPosition();
@@ -209,6 +216,11 @@ public class Cursor : MonoBehaviour
         overLoot = null;
     }
 
+    public void dropItem()
+    {
+        if (itemInHand != null)
+            dropItemFromHand();
+    }
 
     public void isOverItemSlot(ItemSlotView itemSlotView)
     {
