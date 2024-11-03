@@ -266,7 +266,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5948127664496634782, guid: 07b732f27c7e5e344b8e0369f527fa82, type: 3}
       propertyPath: m_Name
-      value: Shop
+      value: EndLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8041682720029298595, guid: 07b732f27c7e5e344b8e0369f527fa82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,7 +380,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5516207186239742014, guid: 60a78ad6c03310042b017a2257497e79, type: 3}
       propertyPath: m_Name
-      value: NotPlayer
+      value: Hero
       objectReference: {fileID: 0}
     - target: {fileID: 7056371927377489124, guid: 60a78ad6c03310042b017a2257497e79, type: 3}
       propertyPath: m_LocalPosition.x
