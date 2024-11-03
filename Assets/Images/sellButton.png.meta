@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b9e9f6bd5ffbabb4b91b08f5265f8157
+guid: 823652de3fe47f845989d08499fefbf3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4865196688339265414
-    second: "\u0442\u043E\u0440\u04422_0"
+      213: -7567721562180675015
+    second: sellButton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0442\u043E\u0440\u04422_0"
+      name: sellButton_0
       rect:
         serializedVersion: 2
-        x: 501
-        y: 554
-        width: 1002
-        height: 908
+        x: 0
+        y: 0
+        width: 171
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a78912d83695b7cb0800000000000000
-      internalID: -4865196688339265414
+      spriteID: 93a182fa55d0af690800000000000000
+      internalID: -7567721562180675015
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      "\u0442\u043E\u0440\u04422_0": -4865196688339265414
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

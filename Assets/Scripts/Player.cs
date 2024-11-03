@@ -24,8 +24,13 @@ public class Player : MonoBehaviour
     public bool myTurn = false;
     private Item itemInHand;
     public float invisTime = 0;
-    
 
+
+    public static Player instance;
+    private void Start()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
