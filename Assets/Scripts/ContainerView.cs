@@ -17,7 +17,7 @@ public class ContainerView : MonoBehaviour
     private void Start()
     {
         //test
-        this.container = new Container(10, 5);
+        this.container = new Container(3, 3);
 
         generateSlots();
         //test

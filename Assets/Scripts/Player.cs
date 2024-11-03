@@ -98,6 +98,11 @@ public class Player : MonoBehaviour
             enemy.myTurn = false;
             myTurn = true;
         }
+
+        if (other.CompareTag("shop"))
+        {
+            walking = false;
+        }
     }
 
     public void GameOver()
@@ -127,6 +132,7 @@ public class Player : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
+        print("click");
         cursor.clickOnPlayer = true;
     }
 }
