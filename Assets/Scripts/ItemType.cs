@@ -9,6 +9,7 @@ public class ItemType : ScriptableObject
     public string description;
     public string category;
     public Sprite image;
+    public float damage;
 
     public string[] rawPlaces;
 

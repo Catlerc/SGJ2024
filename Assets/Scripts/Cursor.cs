@@ -1,4 +1,6 @@
 ﻿using System;
+using JetBrains.Annotations;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
@@ -8,6 +10,7 @@ public class Cursor : MonoBehaviour
     public ItemType testType;
 
     public GameObject itemObjPrefab;
+    public Player player;
 
     // item in hand
     public Item itemInHand;
@@ -17,6 +20,8 @@ public class Cursor : MonoBehaviour
 
     //state
     private ItemSlotView overItemView = null;
+    public bool clickOnPlayer = false;
+    [CanBeNull] public Loot overLoot;
 
     private void Start()
     {
@@ -107,11 +112,31 @@ public class Cursor : MonoBehaviour
         transform.position = pos;
     }
 
+    private void setItemToPlayer()
+    {
+        var item = itemInHand;
+        removeItemFromHand();
+        player.setItem(item);
+    }
+
     private void Update()
     {
         if (itemInHand != null && Input.GetMouseButtonDown(1))
         {
             rotateItemHand();
+            goto skipOtherActions;
+        }
+
+        if (overLoot != null && itemInHand == null)
+        {
+            grabItem(overLoot.item);
+            Destroy(overLoot.gameObject);
+            goto skipOtherActions;
+        }
+
+        if (itemInHand != null && clickOnPlayer && overItemView == null)
+        {
+            setItemToPlayer();
             goto skipOtherActions;
         }
 
@@ -146,6 +171,8 @@ public class Cursor : MonoBehaviour
         if (itemInHand != null) updateItemHandPosition();
 
         overItemView = null;
+        clickOnPlayer = false;
+        overLoot = null;
     }
 
 

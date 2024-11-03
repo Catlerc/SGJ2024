@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794f96dfa917422c88f65604d6dff440, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: d1b5851a225e4b78b1021bbff6892d00, type: 3}
+  m_Name: TestKey
   m_EditorClassIdentifier: 
-  name: test
-  cost: 1
-  description: test item
-  category: 
-  image: {fileID: -5623194428626525839, guid: 29a5e9014981aee4bb42f773b6e21255, type: 3}
-  damage: 1
+  name: test key
+  cost: 5
+  description: 
+  image: {fileID: 1095141833252711340, guid: 17345d209b4d7d84ab64eb0f95242868, type: 3}
   rawPlaces:
-  - 10
-  - 10
-  - 21
+  - 2

@@ -9,16 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 794f96dfa917422c88f65604d6dff440, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 11276800068b4036bfe3d4750994a5f2, type: 3}
+  m_Name: New Enemy Type
   m_EditorClassIdentifier: 
-  name: test
-  cost: 1
-  description: test item
-  category: 
-  image: {fileID: -5623194428626525839, guid: 29a5e9014981aee4bb42f773b6e21255, type: 3}
-  damage: 1
-  rawPlaces:
-  - 10
-  - 10
-  - 21
+  sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  lootTable:
+  - {fileID: 11400000, guid: 61cf93396ab08b54395dc66fe2a9514b, type: 2}
+  maxHP: 10
+  attack: 1
