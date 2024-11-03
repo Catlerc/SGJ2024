@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     //links
     public GameObject mapObj;
     public GameObject playerObj;
-
+    public SpriteRenderer playerSpriteRenderer;
+    public SpriteRenderer playerSpriteRenderer2;
     public SpriteRenderer itemRenderer;
     public Cursor cursor;
 
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     private bool inAnimation = false;
     public bool myTurn = false;
     private Item itemInHand;
+    public float invisTime = 0;
+    
 
 
     private void Update()
@@ -34,10 +37,30 @@ public class Player : MonoBehaviour
         if (health.health <= 0) GameOver();
         if (!inAnimation && enemy != null)
         {
+            if (invisTime > 0)
+            {
+                enemy = null;
+                walking = true;
+            }
+
             if (myTurn)
             {
                 StartCoroutine(startFightAnimation());
             }
+        }
+
+        if (invisTime > 0)
+        {
+            invisTime -= Time.deltaTime;
+            itemRenderer.color = Color.grey;
+            playerSpriteRenderer.color = Color.grey;
+            playerSpriteRenderer2.color = Color.grey;
+        }
+        else
+        {
+            itemRenderer.color = Color.white;
+            playerSpriteRenderer.color = Color.white;
+            playerSpriteRenderer2.color = Color.white;
         }
     }
 
@@ -67,7 +90,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("enemy"))
+        if (other.CompareTag("enemy") && invisTime <= 0)
         {
             walking = false;
             enemy = other.gameObject.GetComponent<Enemy>();
@@ -93,7 +116,6 @@ public class Player : MonoBehaviour
             itemInHand = item;
             itemRenderer.sprite = item.type.image;
             itemRenderer.gameObject.SetActive(true);
-            
         }
         else
         {
@@ -106,6 +128,5 @@ public class Player : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         cursor.clickOnPlayer = true;
-        
     }
 }

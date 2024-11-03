@@ -112,6 +112,23 @@ public class Cursor : MonoBehaviour
         transform.position = pos;
     }
 
+
+    private void applyPotionToPlayer()
+    {
+        if (itemInHand.type is HealPotionItemType)
+        {
+            player.health.health += ((HealPotionItemType)itemInHand.type).amount;
+            if (player.health.health > player.health.maxHealth) player.health.health = player.health.maxHealth;
+        }
+
+        if (itemInHand.type is InvisibilityPotionItemType)
+        {
+            player.invisTime += ((InvisibilityPotionItemType)itemInHand.type).duration;
+        }
+
+        removeItemFromHand();
+    }
+
     private void setItemToPlayer()
     {
         var item = itemInHand;
@@ -136,7 +153,11 @@ public class Cursor : MonoBehaviour
 
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
-            setItemToPlayer();
+            if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
+                applyPotionToPlayer();
+            else
+                setItemToPlayer();
+
             goto skipOtherActions;
         }
 
@@ -144,7 +165,6 @@ public class Cursor : MonoBehaviour
             overItemView.itemSlot.item != null && overItemView.itemSlot.item.type is ChestItemType &&
             itemInHand.type is KeyItemType)
         {
-            // grabItemFromContainer();
             (overItemView.itemSlot.item.type as ChestItemType).openChest(containerView, overItemView.itemSlot.item);
             removeItemFromHand();
 
