@@ -102,6 +102,8 @@ public class Player : MonoBehaviour
         if (other.CompareTag("shop"))
         {
             walking = false;
+            var shop = other.gameObject.GetComponent<Shop>();
+            shop.openShopUI();
         }
     }
 

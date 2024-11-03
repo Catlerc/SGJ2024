@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemType : ScriptableObject
 {
     public string name;
-    public string cost;
+    public int cost;
     public string description;
     public string category;
     public Sprite image;

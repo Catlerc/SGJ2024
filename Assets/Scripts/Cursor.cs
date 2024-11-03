@@ -170,10 +170,9 @@ public class Cursor : MonoBehaviour
 
 
         // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
-        if (clickOnPlayer) print("clicked " + (itemInHand != null));
+        
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
-            print("aaaa");
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
                 applyPotionToPlayer();
             else
