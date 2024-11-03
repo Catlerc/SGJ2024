@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 using NUnit.Framework.Constraints;
+using TMPro;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
@@ -15,6 +16,14 @@ public class Cursor : MonoBehaviour
     public GameObject lootPrefab;
 
     public Transform dropPoint;
+
+
+    public GameObject tooltip;
+    public TextMeshPro nameText;
+    public TextMeshPro descText;
+    public TextMeshPro costText;
+
+    public TextMeshPro categoryText;
 
     // item in hand
     public Item itemInHand;
@@ -46,6 +55,14 @@ public class Cursor : MonoBehaviour
         itemInHandView.updateSpriteSize();
     }
 
+    private void updateToolTip(Item item)
+    {
+        tooltip.SetActive(true);
+        nameText.text = item.type.name;
+        descText.text = item.type.description;
+        categoryText.text = item.type.category;
+        costText.text = item.type.cost.ToString();
+    }
 
     private void placeItemInContainer()
     {
@@ -184,6 +201,10 @@ public class Cursor : MonoBehaviour
 
 
         // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
+
+        if (itemInHand != null) updateToolTip(itemInHand);
+        else if (overItemView != null && overItemView.itemSlot.item != null) updateToolTip(overItemView.itemSlot.item);
+        else tooltip.SetActive(false);
 
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
