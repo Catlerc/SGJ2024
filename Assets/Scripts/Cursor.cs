@@ -56,13 +56,13 @@ public class Cursor : MonoBehaviour
         itemInHandView.updateSpriteSize();
     }
 
-    public void updateToolTip(Item item)
+    public void updateToolTip(ItemType item)
     {
         tooltip.SetActive(true);
-        nameText.text = item.type.name;
-        descText.text = item.type.description;
-        categoryText.text = item.type.category;
-        costText.text = item.type.cost.ToString();
+        nameText.text = item.name;
+        descText.text = item.description;
+        categoryText.text = item.category;
+        costText.text = item.cost.ToString();
     }
 
     public void disableToolTip()
@@ -227,8 +227,8 @@ public class Cursor : MonoBehaviour
 
         // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
 
-        if (itemInHand != null) updateToolTip(itemInHand);
-        else if (overItemView != null && overItemView.itemSlot.item != null) updateToolTip(overItemView.itemSlot.item);
+        if (itemInHand != null) updateToolTip(itemInHand.type);
+        else if (overItemView != null && overItemView.itemSlot.item != null) updateToolTip(overItemView.itemSlot.item.type);
         else if (!overShopItem)disableToolTip();
         
         if (itemInHand != null && clickOnPlayer && overItemView == null)

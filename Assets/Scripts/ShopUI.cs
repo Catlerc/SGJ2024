@@ -44,7 +44,7 @@ public class ShopUI : MonoBehaviour
         foreach (var itemType in actualShop.items)
         {
             var line = Instantiate(linePrefab, lineStartMarker).GetComponent<ButItemLine>();
-            line.init(new Item(itemType));
+            line.init(itemType);
             line.transform.localPosition = new Vector3(0, -i, -3);
             l.Add(line.gameObject);
             i += 1;
