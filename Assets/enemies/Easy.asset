@@ -23,5 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e56d722b9594746429dfd4ea9ebe2cd1, type: 2}
   - {fileID: 11400000, guid: 02823742663b5594cac0644eb1e5e294, type: 2}
   maxHP: 25
-  attack: 20
-  size: 0.75
+  attack: 3
+  size: 0.7
