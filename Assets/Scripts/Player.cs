@@ -3,6 +3,7 @@ using System.Collections;
 using JetBrains.Annotations;
 using NUnit.Framework.Constraints;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class Player : MonoBehaviour
             {
                 time = 0;
                 walkType = !walkType;
+
+                if (Random.Range(0f, 100f) < 3) dropCurrentItem();
             }
 
             playerSpriteRenderer.sprite = walkType ? GGWalk1 : GGWalk2;
@@ -146,14 +149,25 @@ public class Player : MonoBehaviour
         health.health -= dmg;
     }
 
-    public void setItem([CanBeNull] Item item)
+    public void dropCurrentItem()
     {
         if (itemInHand != null)
         {
             var loot = Instantiate(lootPrefab, Player.instance.mapObj.transform).GetComponent<Loot>();
             loot.transform.position = playerSpriteRenderer.transform.position + new Vector3(0, 0, -0.2f);
             loot.init(itemInHand);
+            itemInHand = null;
+            itemRenderer.gameObject.SetActive(false);
+        }   
+    }
+
+    public void setItem([CanBeNull] Item item)
+    {
+        if (itemInHand != null)
+        {
+            dropCurrentItem();
         }
+
         if (item != null)
         {
             itemInHand = item;
@@ -165,8 +179,6 @@ public class Player : MonoBehaviour
             itemInHand = null;
             itemRenderer.gameObject.SetActive(false);
         }
-        
-        
     }
 
 
