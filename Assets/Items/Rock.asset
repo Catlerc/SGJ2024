@@ -20,4 +20,4 @@ MonoBehaviour:
   image: {fileID: -8988690454638447284, guid: a04b8e35ce5ffb84998fab7de46f33aa, type: 3}
   damage: 10
   rawPlaces:
-  - 1
+  - 2
