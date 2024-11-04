@@ -1186,9 +1186,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371343194}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2129476105}
@@ -1237,7 +1237,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -3476427774138504674, guid: dcd32f6ca5d27e145b6b11d6d731742e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3900,7 +3900,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.061894, y: 4.385563}
+  m_Offset: {x: -3.0944557, y: 4.4832473}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3910,7 +3910,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8109045, y: 0.83999634}
+  m_Size: {x: 1.120239, y: 1.3772612}
   m_EdgeRadius: 0
 --- !u!114 &943120988
 MonoBehaviour:
@@ -3931,12 +3931,17 @@ MonoBehaviour:
   itemRenderer: {fileID: 1151245926}
   cursor: {fileID: 504645122}
   gameOverScreen: {fileID: 1252474656}
+  GGWalk1: {fileID: -1063677104174189838, guid: a4f17f40092c50d418993a65f7cb8f80, type: 3}
+  GGWalk2: {fileID: -6986016324632407217, guid: 3fb2ed226128ffb43ae03f4f56daa3da, type: 3}
+  VGWalk1: {fileID: -3476427774138504674, guid: dcd32f6ca5d27e145b6b11d6d731742e, type: 3}
+  VGWalk2: {fileID: -6662146368257075200, guid: ac7b5de2f93257e4a991012553501ecd, type: 3}
   moveSpeed: 1
   startingItem: {fileID: 11400000, guid: 8cc54390d4eb05f4d9e64ef29e67b37b, type: 2}
   walking: 1
   health: {fileID: 943120986}
   myTurn: 0
   invisTime: 0
+  lootPrefab: {fileID: 5382569634891566175, guid: fc869c955ca9b8f48894fda45c531e43, type: 3}
 --- !u!4 &943120989
 Transform:
   m_ObjectHideFlags: 0
@@ -4576,8 +4581,8 @@ Transform:
   m_GameObject: {fileID: 1151245924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.352, y: 0.104, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0.391, y: 0.376, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1554415655}
@@ -4626,15 +4631,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1192600371931176174, guid: 905a5e515d9cd944d8aa86c6b359dcf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.26, y: 10.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1196037389
@@ -5082,7 +5087,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1554415655}
@@ -5131,7 +5136,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1095141833252711340, guid: 17345d209b4d7d84ab64eb0f95242868, type: 3}
+  m_Sprite: {fileID: -6986016324632407217, guid: 3fb2ed226128ffb43ae03f4f56daa3da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6923,10 +6928,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 504645122}
-  keyItemType: {fileID: 11400000, guid: 61cf93396ab08b54395dc66fe2a9514b, type: 2}
-  chestItemType: {fileID: 11400000, guid: 07e8659e6ca3537429809c8c8309b8bd, type: 2}
-  invizType: {fileID: 11400000, guid: c8bc9871d6c8a92419bd38d422121585, type: 2}
-  healType: {fileID: 11400000, guid: 93419980e1865af4495cd9bfe08e47f7, type: 2}
+  keyItemType: {fileID: 11400000, guid: 0bb16fbb20c46a549aaa6948b64fc195, type: 2}
+  chestItemType: {fileID: 11400000, guid: 63deb6a7b3f83c645a49b661eb9f6b74, type: 2}
+  invizType: {fileID: 11400000, guid: 3e56631f5f22a074ca39debfca241553, type: 2}
+  healType: {fileID: 11400000, guid: c90eff7c7532f91469ac79ae8ccc16bb, type: 2}
   itemType: {fileID: 11400000, guid: ba83a537842d37241bd1b20866cdff53, type: 2}
 --- !u!4 &2063447969
 Transform:
@@ -7004,7 +7009,7 @@ Transform:
   m_GameObject: {fileID: 2129476104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.16, y: 4.49, z: -1}
+  m_LocalPosition: {x: -4.67, y: 4.49, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

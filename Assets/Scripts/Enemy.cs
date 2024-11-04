@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
     public EnemyType type;
     public SpriteRenderer spriteRenderer;
     public GameObject lootPrefab;
+    private float time = 0;
 
     // state
     private bool inAnimation = false;
     public bool myTurn = false;
+    private bool animType = false;
 
     private void Start()
     {
@@ -33,6 +35,17 @@ public class Enemy : MonoBehaviour
             if (myTurn)
             {
                 StartCoroutine(startFightAnimation());
+            }
+            else
+            {
+                time += Time.deltaTime;
+                if (time > 0.5f)
+                {
+                    time = 0;
+                    animType = !animType;
+                }
+
+                spriteRenderer.sprite = animType ? type.sprite : type.sprite2;
             }
         }
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Medium
   m_EditorClassIdentifier: 
   sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
+  sprite2: {fileID: -7567721562180675015, guid: 823652de3fe47f845989d08499fefbf3, type: 3}
   lootTable:
   - {fileID: 11400000, guid: e56d722b9594746429dfd4ea9ebe2cd1, type: 2}
   - {fileID: 11400000, guid: a4f131da1e36f8d428b7fea042b169fd, type: 2}

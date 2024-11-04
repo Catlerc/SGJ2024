@@ -4,6 +4,7 @@
 public class EnemyType : ScriptableObject
 {
     public Sprite sprite;
+    public Sprite sprite2;
     public ItemType[] lootTable;
     public float maxHP;
     public float attack;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f746db8039612544e9998cc8f3fcf972
+guid: dcd32f6ca5d27e145b6b11d6d731742e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7675826601332790545
-    second: coin_0
+      213: -3476427774138504674
+    second: "\u0432\u0433 \u043A\u0430\u0434\u04401_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coin_0
+      name: "\u0432\u0433 \u043A\u0430\u0434\u04401_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 72
-        height: 74
+        x: 385
+        y: 253
+        width: 1239
+        height: 1470
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1155fe920a3068a60800000000000000
-      internalID: 7675826601332790545
+      spriteID: e1a2c2bbb5f31cfc0800000000000000
+      internalID: -3476427774138504674
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      coin_0: 7675826601332790545
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

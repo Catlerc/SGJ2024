@@ -27,7 +27,7 @@ public class Loot : MonoBehaviour
         {
             time += Time.deltaTime;
             var t = time / maxTime;
-            itemRenderer.transform.localPosition = new Vector3(0, Mathf.Sin((0.25f + t * 0.75f) * Mathf.PI)/5, 0);
+            itemRenderer.transform.localPosition = new Vector3(0, Mathf.Sin((0.25f + t * 0.75f) * Mathf.PI)/5-t, 0);
             itemRenderer.transform.rotation = Quaternion.Euler(0, 0, 360*t);
             yield return new WaitForEndOfFrame();
         }

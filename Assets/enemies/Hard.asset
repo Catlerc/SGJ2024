@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
+  sprite2: {fileID: -7567721562180675015, guid: 823652de3fe47f845989d08499fefbf3, type: 3}
   lootTable:
   - {fileID: 11400000, guid: f0abafc05312c894c85daf1e67183e62, type: 2}
   - {fileID: 11400000, guid: 5480648aca1c429458a53c8ac7c91fa1, type: 2}

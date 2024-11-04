@@ -159,12 +159,14 @@ public class Cursor : MonoBehaviour
     {
         if (itemInHand.type is HealPotionItemType)
         {
+            print("health");
             player.health.health += ((HealPotionItemType)itemInHand.type).amount;
             if (player.health.health > player.health.maxHealth) player.health.health = player.health.maxHealth;
         }
 
         if (itemInHand.type is InvisibilityPotionItemType)
         {
+            print("inviz");
             player.invisTime += ((InvisibilityPotionItemType)itemInHand.type).duration;
         }
 

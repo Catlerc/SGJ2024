@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
+  sprite2: {fileID: -7567721562180675015, guid: 823652de3fe47f845989d08499fefbf3, type: 3}
   lootTable:
   - {fileID: 11400000, guid: 0bb16fbb20c46a549aaa6948b64fc195, type: 2}
   - {fileID: 11400000, guid: 63deb6a7b3f83c645a49b661eb9f6b74, type: 2}

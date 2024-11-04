@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using JetBrains.Annotations;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,10 +15,17 @@ public class Player : MonoBehaviour
     public Cursor cursor;
     public GameObject gameOverScreen;
 
+
+    public Sprite GGWalk1;
+    public Sprite GGWalk2;
+    public Sprite VGWalk1;
+    public Sprite VGWalk2;
+
     //settings
     public float moveSpeed = 1f;
 
     public ItemType startingItem;
+
     //state
     public bool walking = true;
     public Health health;
@@ -27,8 +35,13 @@ public class Player : MonoBehaviour
     private Item itemInHand;
     public float invisTime = 0;
 
+    private float time;
+    public GameObject lootPrefab;
+
 
     public static Player instance;
+    private bool walkType = false;
+
     private void Start()
     {
         instance = this;
@@ -40,6 +53,15 @@ public class Player : MonoBehaviour
         if (walking)
         {
             mapObj.transform.Translate(-moveSpeed * Time.deltaTime, 0, 0);
+            time += Time.deltaTime;
+            if (time > 0.3f)
+            {
+                time = 0;
+                walkType = !walkType;
+            }
+
+            playerSpriteRenderer.sprite = walkType ? GGWalk1 : GGWalk2;
+            playerSpriteRenderer2.sprite = walkType ? VGWalk1 : VGWalk2;
         }
 
         if (health.health <= 0) GameOver();
@@ -126,6 +148,12 @@ public class Player : MonoBehaviour
 
     public void setItem([CanBeNull] Item item)
     {
+        if (itemInHand != null)
+        {
+            var loot = Instantiate(lootPrefab, Player.instance.mapObj.transform).GetComponent<Loot>();
+            loot.transform.position = playerSpriteRenderer.transform.position + new Vector3(0, 0, -0.2f);
+            loot.init(itemInHand);
+        }
         if (item != null)
         {
             itemInHand = item;
@@ -137,6 +165,8 @@ public class Player : MonoBehaviour
             itemInHand = null;
             itemRenderer.gameObject.SetActive(false);
         }
+        
+        
     }
 
 
