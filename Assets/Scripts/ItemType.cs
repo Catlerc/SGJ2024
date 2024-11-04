@@ -15,6 +15,6 @@ public class ItemType : ScriptableObject
 
     public Shape getShape()
     {
-        return Shape.fromStrings(this.rawPlaces);
+        return Shape.fromStrings(this.rawPlaces, name);
     }
 }

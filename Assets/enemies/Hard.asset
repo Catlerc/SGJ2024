@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11276800068b4036bfe3d4750994a5f2, type: 3}
   m_Name: Hard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 297761703447499198, guid: 79c4929add807624dbfa137609070a4c, type: 3}
-  sprite2: {fileID: -7567721562180675015, guid: 823652de3fe47f845989d08499fefbf3, type: 3}
+  sprite: {fileID: -8012628747177313196, guid: 0695a6ba3f1d4f3469f0bfdaaef4958b, type: 3}
+  sprite2: {fileID: -4090762684977672896, guid: c246ee2eefb2f454e879237dfeebe9fa, type: 3}
   lootTable:
   - {fileID: 11400000, guid: f0abafc05312c894c85daf1e67183e62, type: 2}
   - {fileID: 11400000, guid: 5480648aca1c429458a53c8ac7c91fa1, type: 2}
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c373719ec3e926a4196243f14566eb81, type: 2}
   maxHP: 100
   attack: 30
+  size: 1.2

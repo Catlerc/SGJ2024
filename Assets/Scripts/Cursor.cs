@@ -94,15 +94,16 @@ public class Cursor : MonoBehaviour
 
     private void updateItemHandPosition()
     {
+        var offset = new Vector3(0, 0, -20);
         if (overItemView != null)
         {
-            itemInHandView.transform.position = overItemView.transform.position;
-            itemInHandPartsView.transform.position = overItemView.transform.position;
+            itemInHandView.transform.position = overItemView.transform.position + offset;
+            itemInHandPartsView.transform.position = overItemView.transform.position + offset;
         }
         else
         {
-            itemInHandView.transform.position = transform.position;
-            itemInHandPartsView.transform.position = transform.position;
+            itemInHandView.transform.position = transform.position + offset;
+            itemInHandPartsView.transform.position = transform.position + offset;
         }
     }
 
@@ -129,8 +130,25 @@ public class Cursor : MonoBehaviour
         }
         else
         {
-            foreach (var partPos in check.okParts) itemInHandPartsView.parts[partPos].ok = true;
-            foreach (var partPos in check.badParts) itemInHandPartsView.parts[partPos].ok = false;
+            if (itemInHand.type is KeyItemType && overItemView.itemSlot.item != null &&
+                overItemView.itemSlot.item.type is ChestItemType)
+            {
+                foreach (var partPos in check.badParts) itemInHandPartsView.parts[partPos].isKey = true;
+            }
+            else
+            {
+                foreach (var partPos in check.okParts)
+                {
+                    itemInHandPartsView.parts[partPos].ok = true;
+                    itemInHandPartsView.parts[partPos].isKey = false;
+                }
+
+                foreach (var partPos in check.badParts)
+                {
+                    itemInHandPartsView.parts[partPos].ok = false;
+                    itemInHandPartsView.parts[partPos].isKey = false;
+                }
+            }
         }
     }
 

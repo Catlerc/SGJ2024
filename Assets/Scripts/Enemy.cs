@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         spriteRenderer.sprite = type.sprite;
+        spriteRenderer.transform.localScale = new Vector3(type.size, type.size, 1);
         health.maxHealth = type.maxHP;
         health.health = type.maxHP;
     }

@@ -8,6 +8,7 @@ public class EnemyType : ScriptableObject
     public ItemType[] lootTable;
     public float maxHP;
     public float attack;
+    public float size;
     
     
     public Item randomItemFromLoootTable()

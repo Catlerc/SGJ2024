@@ -73,7 +73,7 @@ public class Shape
         return new[] { minX, maxX, minY, maxY };
     }
 
-    public static Shape fromStrings(string[] strings)
+    public static Shape fromStrings(string[] strings, string name)
     {
         Vector2Int? center = null;
         var placesRaw = new List<Vector2Int>();
@@ -89,6 +89,11 @@ public class Shape
             }
         }
 
+        if (center == null)
+        {
+            Debug.LogError("No center for item "+name );
+        }
+        
         var places = new List<Vector2Int>();
 
         foreach (var placeRaw in placesRaw)

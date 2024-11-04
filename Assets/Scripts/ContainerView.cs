@@ -12,10 +12,13 @@ public class ContainerView : MonoBehaviour
     public Transform itemsBag;
     public Transform slotsBag;
 
+    public Transform startingPoint;
+
     public Dictionary<Vector2Int, ItemSlotView> slots = new Dictionary<Vector2Int, ItemSlotView>();
 
     private void Start()
     {
+        transform.position = startingPoint.position;
         //test
         this.container = new Container(3, 3);
 
@@ -39,7 +42,7 @@ public class ContainerView : MonoBehaviour
     {
         container.applyItem(slot.itemSlot, item);
         var itemView = Instantiate(itemViewPrefab, itemsBag).GetComponent<ItemView>();
-        itemView.transform.position = slot.transform.position ;
+        itemView.transform.position = slot.transform.position;
         itemView.item = item;
         itemView.updateSpriteSize();
         itemViews[item.id] = itemView;

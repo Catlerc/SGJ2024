@@ -12,7 +12,7 @@ public class Item
     {
         this.id = Random.Range(int.MinValue, int.MaxValue);
         this.type = type;
-        this.shape = Shape.fromStrings(type.rawPlaces);
+        this.shape = Shape.fromStrings(type.rawPlaces, type.name);
     }
 
     public void rotate()
