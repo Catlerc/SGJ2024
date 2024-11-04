@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     private bool inAnimation = false;
     public bool myTurn = false;
     private bool animType = false;
-
+    
     private void Start()
     {
         spriteRenderer.sprite = type.sprite;
