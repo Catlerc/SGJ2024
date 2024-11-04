@@ -63,6 +63,7 @@ public class Economics : MonoBehaviour
     {
         for (int i = 0; i < 100; i++)
         {
+            if (amount == 0) break;
             var newAmount = addMoneyToAvailableSlot(amount);
             if (newAmount == amount || newAmount == 0) return newAmount;
             amount = newAmount;
