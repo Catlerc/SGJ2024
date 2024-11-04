@@ -78,7 +78,16 @@ public class Player : MonoBehaviour
 
             if (myTurn)
             {
-                StartCoroutine(startFightAnimation());
+                if (itemInHand != null)
+                {
+                    StartCoroutine(startFightAnimation());
+                }
+                else
+                {
+                    inAnimation = false;
+                    myTurn = false;
+                    enemy.myTurn = true;
+                }
             }
         }
 
