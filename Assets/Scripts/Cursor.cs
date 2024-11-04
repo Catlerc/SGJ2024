@@ -2,6 +2,7 @@
 using JetBrains.Annotations;
 using NUnit.Framework.Constraints;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Cursor : MonoBehaviour
@@ -21,6 +22,7 @@ public class Cursor : MonoBehaviour
     public GameObject tooltip;
     public TextMeshPro nameText;
     public TextMeshPro descText;
+    public TextMeshPro dmgText;
     public TextMeshPro costText;
 
     public TextMeshPro categoryText;
@@ -37,6 +39,7 @@ public class Cursor : MonoBehaviour
     [CanBeNull] public Loot overLoot;
     public bool overShopItem = false;
     public AudioSource chestOpenSound;
+    public AudioSource potionSound;
     private void Start()
     {
         instance = this;
@@ -60,9 +63,10 @@ public class Cursor : MonoBehaviour
     {
         tooltip.SetActive(true);
         nameText.text = item.name;
+        dmgText.text = "Урон: "+Mathf.Floor(item.damage).ToString();
         descText.text = item.description;
         categoryText.text = item.category;
-        costText.text = item.cost.ToString();
+        costText.text = "Цена: " + item.cost.ToString();
     }
 
     public void disableToolTip()
@@ -192,7 +196,7 @@ public class Cursor : MonoBehaviour
             print("inviz");
             player.invisTime += ((InvisibilityPotionItemType)itemInHand.type).duration;
         }
-
+        potionSound.Play();
         removeItemFromHand();
     }
 
