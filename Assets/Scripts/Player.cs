@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
     public static Player instance;
     private bool walkType = false;
 
+    public float noDropTime = 10f;
+
     private void Start()
     {
         instance = this;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        noDropTime -= Time.deltaTime;
         if (walking)
         {
             mapObj.transform.Translate(-moveSpeed * Time.deltaTime, 0, 0);
@@ -60,7 +63,7 @@ public class Player : MonoBehaviour
                 time = 0;
                 walkType = !walkType;
 
-                if (Random.Range(0f, 100f) < 2) dropCurrentItem();
+                if (Random.Range(0f, 100f) < 2 && noDropTime <= 0) dropCurrentItem();
             }
 
             playerSpriteRenderer.sprite = walkType ? GGWalk1 : GGWalk2;
@@ -129,6 +132,7 @@ public class Player : MonoBehaviour
             enemy.attack(itemInHand.type.damage);
             damageSound.Play();
         }
+
         inAnimation = false;
         myTurn = false;
         enemy.myTurn = true;
@@ -172,11 +176,12 @@ public class Player : MonoBehaviour
             loot.init(itemInHand);
             itemInHand = null;
             itemRenderer.gameObject.SetActive(false);
-        }   
+        }
     }
 
     public void setItem([CanBeNull] Item item)
     {
+        noDropTime = 3f;
         if (itemInHand != null)
         {
             dropCurrentItem();
