@@ -36,7 +36,7 @@ public class Cursor : MonoBehaviour
     public bool clickOnPlayer = false;
     [CanBeNull] public Loot overLoot;
     public bool overShopItem = false;
-
+    public AudioSource chestOpenSound;
     private void Start()
     {
         instance = this;
@@ -246,6 +246,7 @@ public class Cursor : MonoBehaviour
             itemInHand.type is KeyItemType)
         {
             (overItemView.itemSlot.item.type as ChestItemType).openChest(containerView, overItemView.itemSlot.item);
+            chestOpenSound.Play();
             removeItemFromHand();
 
             goto skipOtherActions;

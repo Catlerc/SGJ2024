@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     private float time;
     public GameObject lootPrefab;
-
+    public AudioSource damageSound;
 
     public static Player instance;
     private bool walkType = false;
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
                 time = 0;
                 walkType = !walkType;
 
-                if (Random.Range(0f, 100f) < 3) dropCurrentItem();
+                if (Random.Range(0f, 100f) < 2) dropCurrentItem();
             }
 
             playerSpriteRenderer.sprite = walkType ? GGWalk1 : GGWalk2;
@@ -115,7 +115,11 @@ public class Player : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        if (itemInHand != null) enemy.attack(itemInHand.type.damage);
+        if (itemInHand != null)
+        {
+            enemy.attack(itemInHand.type.damage);
+            damageSound.Play();
+        }
         inAnimation = false;
         myTurn = false;
         enemy.myTurn = true;
@@ -146,6 +150,7 @@ public class Player : MonoBehaviour
 
     public void attack(float dmg)
     {
+        damageSound.Play();
         health.health -= dmg;
     }
 

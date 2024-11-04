@@ -25,7 +25,8 @@ public class ShopUI : MonoBehaviour
     public TextMeshPro bountyText;
 
     public GameObject winScreen;
-
+    public AudioSource openDoorSound;
+    public AudioSource paySound;
     private void Start()
     {
         instance = this;
@@ -85,6 +86,8 @@ public class ShopUI : MonoBehaviour
             Player.instance.walking = true;
             // Cursor.instance.grabItem(item);
             closeShopUI();
+            openDoorSound.Play();
+            paySound.Play();
         }
     }
 }
