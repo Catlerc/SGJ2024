@@ -33,6 +33,9 @@ public class Cursor : MonoBehaviour
     private ItemPartsView itemInHandPartsView;
     private ItemView itemInHandView;
 
+
+    public GameObject dropButton;
+
     //state
     private ItemSlotView overItemView = null;
     public bool clickOnPlayer = false;
@@ -40,6 +43,7 @@ public class Cursor : MonoBehaviour
     public bool overShopItem = false;
     public AudioSource chestOpenSound;
     public AudioSource potionSound;
+
     private void Start()
     {
         instance = this;
@@ -63,7 +67,7 @@ public class Cursor : MonoBehaviour
     {
         tooltip.SetActive(true);
         nameText.text = item.name;
-        dmgText.text = "Урон: "+Mathf.Floor(item.damage).ToString();
+        dmgText.text = "Урон: " + Mathf.Floor(item.damage).ToString();
         descText.text = item.description;
         categoryText.text = item.category;
         costText.text = "Цена: " + item.cost.ToString();
@@ -196,6 +200,7 @@ public class Cursor : MonoBehaviour
             print("inviz");
             player.invisTime += ((InvisibilityPotionItemType)itemInHand.type).duration;
         }
+
         potionSound.Play();
         removeItemFromHand();
     }
@@ -232,9 +237,10 @@ public class Cursor : MonoBehaviour
         // print((itemInHand != null) + " " + clickOnPlayer + " " + (overItemView == null));
 
         if (itemInHand != null) updateToolTip(itemInHand.type);
-        else if (overItemView != null && overItemView.itemSlot.item != null) updateToolTip(overItemView.itemSlot.item.type);
-        else if (!overShopItem)disableToolTip();
-        
+        else if (overItemView != null && overItemView.itemSlot.item != null)
+            updateToolTip(overItemView.itemSlot.item.type);
+        else if (!overShopItem) disableToolTip();
+
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
@@ -277,6 +283,10 @@ public class Cursor : MonoBehaviour
             else disableItemPartsRender();
 
         if (itemInHand != null) updateItemHandPosition();
+
+        dropButton.SetActive(itemInHand != null);
+        // if (itemInHand!=null) 
+        //     dropButton.set
 
         overItemView = null;
         clickOnPlayer = false;
