@@ -12,13 +12,13 @@ public class ContainerView : MonoBehaviour
     public Transform itemsBag;
     public Transform slotsBag;
 
-    public Transform startingPoint;
+    // public Transform startingPoint;
 
     public Dictionary<Vector2Int, ItemSlotView> slots = new Dictionary<Vector2Int, ItemSlotView>();
 
     private void Start()
     {
-        transform.position = startingPoint.position;
+        // transform.position = startingPoint.position;
         //test
         this.container = new Container(4, 2);
 
