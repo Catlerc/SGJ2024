@@ -127,6 +127,7 @@ public class Cursor : MonoBehaviour
         foreach (var (pos, part) in itemInHandPartsView.parts)
         {
             part.gameObject.SetActive(true);
+            part.isKey = false;
         }
 
         var check = containerView.container.checkShape(itemInHand.shape, overItemView.itemSlot.pos);
@@ -146,13 +147,11 @@ public class Cursor : MonoBehaviour
                 foreach (var partPos in check.okParts)
                 {
                     itemInHandPartsView.parts[partPos].ok = true;
-                    itemInHandPartsView.parts[partPos].isKey = false;
                 }
 
                 foreach (var partPos in check.badParts)
                 {
                     itemInHandPartsView.parts[partPos].ok = false;
-                    itemInHandPartsView.parts[partPos].isKey = false;
                 }
             }
         }
