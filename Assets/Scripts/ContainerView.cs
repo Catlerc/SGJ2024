@@ -20,7 +20,7 @@ public class ContainerView : MonoBehaviour
     {
         transform.position = startingPoint.position;
         //test
-        this.container = new Container(3, 3);
+        this.container = new Container(4, 2);
 
         generateSlots();
         //test

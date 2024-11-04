@@ -35,6 +35,7 @@ public class Cursor : MonoBehaviour
     private ItemSlotView overItemView = null;
     public bool clickOnPlayer = false;
     [CanBeNull] public Loot overLoot;
+    public bool overShopItem = false;
 
     private void Start()
     {
@@ -55,13 +56,18 @@ public class Cursor : MonoBehaviour
         itemInHandView.updateSpriteSize();
     }
 
-    private void updateToolTip(Item item)
+    public void updateToolTip(Item item)
     {
         tooltip.SetActive(true);
         nameText.text = item.type.name;
         descText.text = item.type.description;
         categoryText.text = item.type.category;
         costText.text = item.type.cost.ToString();
+    }
+
+    public void disableToolTip()
+    {
+        tooltip.SetActive(false);
     }
 
     private void placeItemInContainer()
@@ -224,8 +230,8 @@ public class Cursor : MonoBehaviour
 
         if (itemInHand != null) updateToolTip(itemInHand);
         else if (overItemView != null && overItemView.itemSlot.item != null) updateToolTip(overItemView.itemSlot.item);
-        else tooltip.SetActive(false);
-
+        else if (!overShopItem)disableToolTip();
+        
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
@@ -271,6 +277,7 @@ public class Cursor : MonoBehaviour
         overItemView = null;
         clickOnPlayer = false;
         overLoot = null;
+        overShopItem = false;
     }
 
     public void dropItem()
