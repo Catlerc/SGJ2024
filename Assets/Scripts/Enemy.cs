@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
             var t = time / maxTime;
 
             var c = Mathf.Sin(t * Mathf.PI) / 7;
-            spriteRenderer.transform.localScale = new Vector3(1 + c, 1 - c, 1);
+            spriteRenderer.transform.localScale = new Vector3(type.size + c, type.size - c, 1);
             spriteRenderer.transform.localPosition = new Vector3(-c, 0, 0);
 
             yield return new WaitForEndOfFrame();

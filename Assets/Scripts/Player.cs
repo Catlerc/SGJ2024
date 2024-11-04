@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
                 time = 0;
                 walkType = !walkType;
 
-                if (Random.Range(0f, 100f) < 3) dropCurrentItem();
+                if (Random.Range(0f, 100f) < 2) dropCurrentItem();
             }
 
             playerSpriteRenderer.sprite = walkType ? GGWalk1 : GGWalk2;
