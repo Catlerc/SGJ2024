@@ -42,8 +42,11 @@ public class Player : MonoBehaviour
 
     public static Player instance;
     private bool walkType = false;
+    public bool stop;
 
     public float noDropTime = 10f;
+    public GameObject musicObj;
+    public GameObject winScreen;
 
     private void Start()
     {
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (stop) return;
         noDropTime -= Time.deltaTime;
         if (walking)
         {
@@ -159,6 +163,7 @@ public class Player : MonoBehaviour
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
+        musicObj.SetActive(false);
     }
 
     public void attack(float dmg)
