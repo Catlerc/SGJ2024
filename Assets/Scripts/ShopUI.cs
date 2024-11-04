@@ -8,13 +8,13 @@ public class ShopUI : MonoBehaviour
     public static ShopUI instance;
     public Shop actualShop;
 
-    public Transform inventoryTransform;
-    public Transform dropButtonTransform;
-
-    public Transform markNormDropButton;
-    public Transform markNormInv;
-    public Transform markOpenDropButton;
-    public Transform markOpenInv;
+    // public Transform inventoryTransform;
+    // public Transform dropButtonTransform;
+    //
+    // public Transform markNormDropButton;
+    // public Transform markNormInv;
+    // public Transform markOpenDropButton;
+    // public Transform markOpenInv;
 
     public GameObject shopInterface;
 
@@ -45,7 +45,7 @@ public class ShopUI : MonoBehaviour
         {
             var line = Instantiate(linePrefab, lineStartMarker).GetComponent<ButItemLine>();
             line.init(itemType);
-            line.transform.localPosition = new Vector3(0, -i, -3);
+            line.transform.localPosition = new Vector3(0, -i*0.78f, -3);
             l.Add(line.gameObject);
             i += 1;
         }
@@ -56,16 +56,15 @@ public class ShopUI : MonoBehaviour
     public void openShopUI()
     {
         bountyText.text = "Bounty: " + actualShop.bounty;
-        inventoryTransform.position = markOpenInv.position;
-        dropButtonTransform.position = markOpenDropButton.position;
+        
         shopInterface.SetActive(true);
     }
 
     public void closeShopUI()
     {
         shopInterface.SetActive(false);
-        inventoryTransform.position = markNormInv.position;
-        dropButtonTransform.position = markNormDropButton.position;
+        // inventoryTransform.position = markNormInv.position;
+        // dropButtonTransform.position = markNormDropButton.position;
         if (actualShop.isLast)
         {
             winScreen.SetActive(true);
