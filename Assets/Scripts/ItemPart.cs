@@ -10,14 +10,22 @@ public class ItemPart : MonoBehaviour
     private void Update()
     {
         if (isKey)
-            spriteRenderer.color = Color.yellow;
+        {
+            var c = Color.yellow;
+            c.a = 0.5f;
+            spriteRenderer.color = c;
+        }
         else if (ok)
         {
-            spriteRenderer.color = Color.green;
+            var c = Color.green;
+            c.a = 0.5f;
+            spriteRenderer.color = c;
         }
         else
         {
-            spriteRenderer.color = Color.red;
+            var c = Color.red;
+            c.a = 0.5f;
+            spriteRenderer.color = c;
         }
     }
 }

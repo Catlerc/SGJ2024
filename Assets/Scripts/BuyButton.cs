@@ -11,6 +11,7 @@ public class BuyButton : MonoBehaviour
         var count = Economics.instance.countMoney();
         if (count >= item.cost && Cursor.instance.itemInHand == null)
         {
+            ButtonPressSound.instance.audioSource.Play();
             paySound.Play();
             Economics.instance.removeMoney(item.cost);
             Cursor.instance.grabItem(new Item(item));

@@ -43,6 +43,8 @@ public class Cursor : MonoBehaviour
     public bool overShopItem = false;
     public AudioSource chestOpenSound;
     public AudioSource potionSound;
+    public AudioSource itemTake;
+    public AudioSource itemPut;
 
     private void Start()
     {
@@ -52,6 +54,7 @@ public class Cursor : MonoBehaviour
 
     public void grabItem(Item item)
     {
+        itemTake.Play();
         removeItemFromHand();
         itemInHand = item;
         itemInHandObj = Instantiate(itemObjPrefab, transform);
@@ -80,6 +83,7 @@ public class Cursor : MonoBehaviour
 
     private void placeItemInContainer()
     {
+        itemPut.Play();
         var check = containerView.container.checkShape(itemInHand.shape, overItemView.itemSlot.pos);
 
         if (check.badParts.Length == 0)
@@ -243,10 +247,14 @@ public class Cursor : MonoBehaviour
 
         if (itemInHand != null && clickOnPlayer && overItemView == null)
         {
+            
             if (itemInHand.type is HealPotionItemType || itemInHand.type is InvisibilityPotionItemType)
                 applyPotionToPlayer();
             else
+            {
+                itemPut.Play();
                 setItemToPlayer();
+            }
 
             goto skipOtherActions;
         }
