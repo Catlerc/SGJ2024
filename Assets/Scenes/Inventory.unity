@@ -6058,14 +6058,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3888953281875669656, guid: e4a312ba8a0e09346b6b7890994f2cf0, type: 3}
-      propertyPath: items.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3888953281875669656, guid: e4a312ba8a0e09346b6b7890994f2cf0, type: 3}
-      propertyPath: 'items.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 27f370b077437e244937d5f078c7f24a, type: 2}
     - target: {fileID: 8843362931056631827, guid: e4a312ba8a0e09346b6b7890994f2cf0, type: 3}
       propertyPath: m_Name
       value: Shop
